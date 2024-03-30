@@ -1,0 +1,79 @@
+/*Course recap: React Basics
+1.how React is used in the real world
+2.React components-their architecture,how they are rendered,Create components,update them using JSX,folders,how to import components.
+3.how to use components-declare functional components w/ props,Use JSX to add styling,embed JS expressions in attributes.
+4.data and state-events and how to handle,Use diff syntax for event handlers,data flows b/t parent and child components,useState hooks to extend the functionality of state,stateful vs stateless components.
+5.navigation,assets,Create navigation routes within React router library,conditional rendering logic,ways to store assets,embedded in data files,audio and video assets in your components.
+*/
+import Name from "./file.js" //parent file
+import React, { Children } from 'react' //to use props
+import './App.css'
+
+function Bag(props) { //child of Name.js file = this function is its page
+    const bag = {
+        border: "1px solid gray", //css code as internal /properties of object
+    }
+    console.log(props); //check props list
+    return (
+        <div style={bag}>
+            {props.name}
+        </div>
+    )
+}
+
+export default Bag; //always export
+
+//in Name.js file
+import Bag from './bag.js'
+
+function Name(){
+    return(
+        <div>
+            <Bag name="to show in Bag file"/>
+        </div>
+    )
+}
+//ES6
+function Pic(){
+const a ="pic.png"//store url href in a varaible
+const b = <img src={a}/>;
+return b;
+}
+
+const Nav = (props) =>{
+    return(
+        <div>
+            {props.name}
+            <Pic/>
+        </div>
+    )
+}
+//use {props.children} to pass children elements directly as their content. As some components don't know their children ahead of time
+
+/*React.cloneElement(element,[props])=clone element+return new copy of that elemnt+add new props
+Props in React are immutable objects, so once React.cloneElement has created a copy of the element it can then add/extend/modify the childrens properties in the copy.  
+*/
+const output = React.cloneElement(buttonElement, {disabled: flase})
+return(<div>{React.Children.map(children, (child, index)=>{return child;})}</div>)
+/* hook
+1.useState
+const [date,setDate]=useState("") track data input
+to update state after event= invoke setDate > function updateDate(){setDate("0")} <button onClikc={updateDate}
+2.useEffect to perform side effect
+const fetchData = () => {
+    fetch(`https://api.coindesk.com/v1/bpi/currentprice.json`)
+      .then((response) => response.json())
+      .then((jsonData) => setData(jsonData))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {fetchData();}, []);
+*/
+
+/*spread operator
+const props = { title: "tiramisu", cal: 400 };
+const element = <Component title="cake" {...props} cal={500} />;
+
+const props = { title: "tiramisu", cal: 400 };
+const element = <Component title="cake" {...props} cal={500} />;
+*/

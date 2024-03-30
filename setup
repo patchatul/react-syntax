@@ -1,0 +1,8 @@
+node --version && npm --version
+Setting up VS Code Installing Node and NPM
+npm init react-app firstapp
+cd firstapp
+npm start
+In order to run and view your React app, open VS Code built-in terminal, run npm start, and then click Open Development server (on the blue horizontal bar at the bottom) or right click on the file and Open Preview
+for using  BrowserRouter Routes Route Links npm i react-router-dom
+for audio /embeded media go to github/CookPete/reactplayer
